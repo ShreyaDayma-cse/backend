@@ -12,18 +12,17 @@ const app = express()
 dotenv.config()
 app.use(express.json())
 
-
 const connect = async() =>{
-try {
+try{
     await mongoose.connect(process.env.MONGO);
-    console.log("Connected to database!");
+    console.log("Connected to database!!");
   } catch (error) {
     throw error;
   }
 };
 
 mongoose.connection.on("disconnected", ()=>{
-    console.log("MongoDB disconnected!")
+    console.log("MongoDB disconnected")
 })
 
 //middlewares
@@ -35,7 +34,7 @@ app.use("/api/hotels", hotelsRoute);
 app.use("/api/rooms", roomsRoute);
 
 app.get("/", (req,res) =>{
-  res.send("Welcome")
+  res.send("Welcome to backend")
 })
 
 app.use((err,req,res,next) =>{
