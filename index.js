@@ -11,7 +11,6 @@ import cors from "cors"
 const app = express()
 dotenv.config()
 app.use(express.json())
-app.use(cors());
 
 const connect = async() =>{
 try {
@@ -38,7 +37,6 @@ app.get("/", (req,res) =>{
   res.send("Welcome")
 })
 app.use((err,req,res,next) =>{
-  res.header( "Access-Control-Allow-Origin","*" );
   const errorStatus = err.status ||500
   const errorMessage = err.message || "Something went Wrong"
   return res.status(errorStatus).json({
