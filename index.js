@@ -37,8 +37,8 @@ app.use("/api/rooms", roomsRoute);
 app.get("/", (req,res) =>{
   res.send("Welcome")
 })
-app.use((err,req,res,next) =>{
 
+app.use((err,req,res,next) =>{
   const errorStatus = err.status ||500
   const errorMessage = err.message || "Something went Wrong"
   return res.status(errorStatus).json({
@@ -50,6 +50,6 @@ app.use((err,req,res,next) =>{
 })
 
 app.listen(process.env.PORT || 5000, ()=>{
-    connect()
+    connect();
     console.log(`Server running at port ${process.env.PORT}`)
 })
