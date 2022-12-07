@@ -12,6 +12,7 @@ const app = express()
 dotenv.config()
 app.use(express.json())
 
+
 const connect = async() =>{
 try {
     await mongoose.connect(process.env.MONGO);
@@ -37,6 +38,7 @@ app.get("/", (req,res) =>{
   res.send("Welcome")
 })
 app.use((err,req,res,next) =>{
+
   const errorStatus = err.status ||500
   const errorMessage = err.message || "Something went Wrong"
   return res.status(errorStatus).json({
